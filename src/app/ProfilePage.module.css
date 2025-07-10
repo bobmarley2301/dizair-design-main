@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+
+.bg {
+  background: #E0E0E0;
+  min-height: 100vh;
+  padding: 0;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.menuText{
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.profileCard {
+  background: #E9F0FB;
+  border-radius: 0 0 40px 40px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 100vw;
+  margin: 0;
+}
+
+@media (min-width: 600px) {
+  .bg {
+    padding: 24px 0;
+  }
+  .profileCard {
+    max-width: 420px;
+    margin: 0 auto;
+    border-radius: 40px;
+    width: 100%;
+    min-height: unset;
+  }
+}
+
+.headerBg {
+  position: relative;
+  height: 160px;
+  background: url('/bg.jpg') center/cover no-repeat;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+
+.menuBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.menuIcon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: url('/ico/Message.png') center/contain no-repeat;
+}
+
+.avatar {
+  position: absolute;
+  left: 50%;
+  bottom: -48px;
+  transform: translateX(-50%);
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  object-fit: cover;
+  background: #fff;
+  z-index: 1;
+}
+
+.profileInfo {
+  padding: 30px 60px 0 60px;
+  text-align: center;
+}
+
+.statsRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.statsValue {
+  font-weight: 700;
+  font-size: 16px;
+}
+.statsLabel {
+  font-size: 12px;
+  color: #222;
+}
+.username {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 8px 0 0 0;
+}
+.bio {
+  color: #7B7B7B;
+  font-size: 12px;
+  margin-bottom: 20px;
+  margin-top: 8px;
+}
+.actionRow {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.followBtn {
+  background: #5790DF;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 40px;
+  font-weight: 400;
+  font-size: 12px;
+  box-shadow: 0 12px 8px rgba(107,168,255,0.15);
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+.followBtn:hover {
+  filter: brightness(0.95);
+}
+.messageBtn {
+  background: #fff;
+  color: #222;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 40px;
+  font-weight: 400;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+.messageBtn:hover {
+  filter: brightness(0.97);
+}
+.tabsRow {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.tab {
+  color: #7B7B7B;
+  font-weight: 500;
+  font-size: 16px;
+  padding-bottom: 4px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+.tabActive {
+  font-weight: 600;
+  font-size: 16px;
+  color: #222;
+  border-bottom: 2px solid #6BA8FF;
+  padding-bottom: 4px;
+}
+.postsList {
+  padding: 0 16px 24px 16px;
+}
+.postCard {
+  background: #fff;
+  border-radius: 28px;
+  margin-bottom: 20px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.postHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.postAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+}
+.postName {
+  font-weight: 700;
+  font-size: 16px;
+}
+.postUsername {
+  color: #7B7B7B;
+  font-size: 14px;
+}
+.postImage {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  aspect-ratio: 1.3/1;
+  margin-top: 8px;
+}
+
+.menuPopup {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  z-index: 10;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+.menuPopupItem {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #222;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, transform 0.18s, box-shadow 0.18s;
+  border-radius: 12px;
+}
+.menuPopupItem:hover {
+  background: linear-gradient(90deg, #e0e7ff 0%, #c7d2fe 100%);
+  color: #4F46E5;
+  transform: scale(1.04);
+  box-shadow: 0 2px 12px rgba(99,102,241,0.10);
+} 
