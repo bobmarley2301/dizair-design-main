@@ -1,17 +1,18 @@
 import React from "react";
 import Image from "next/image";
-import styles from "./ProfilePage.module.css";
+import styles from "../styles/ProfilePage.module.css";
 
 interface PostCardProps {
   avatar: string;
   name: string;
   username: string;
   image?: string;
+  isMain?: boolean;
 }
 
 const placeholder = "/image.jpg";
 
-const PostCard: React.FC<PostCardProps> = ({ avatar, name, username, image }) => (
+const PostCard: React.FC<PostCardProps> = React.memo(({ avatar, name, username, image, isMain }) => (
   <div className={styles.postCard}>
     <div className={styles.postHeader}>
       <Image
@@ -20,6 +21,7 @@ const PostCard: React.FC<PostCardProps> = ({ avatar, name, username, image }) =>
         width={40}
         height={40}
         className={styles.postAvatar}
+        aria-label={name + " avatar"}
         onError={(e) => (e.currentTarget.src = placeholder)}
       />
       <div>
@@ -35,9 +37,10 @@ const PostCard: React.FC<PostCardProps> = ({ avatar, name, username, image }) =>
         height={260}
         className={styles.postImage}
         onError={(e) => (e.currentTarget.src = placeholder)}
+        priority={!!isMain}
       />
     )}
   </div>
-);
+));
 
 export default PostCard; 

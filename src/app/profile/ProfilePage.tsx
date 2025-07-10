@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Image from "next/image";
-import PostCard from "./post/PostCard";
-import styles from "./ProfilePage.module.css";
+import PostCard from "../post/PostCard";
+import styles from "../styles/ProfilePage.module.css";
 
 const placeholder = "/image.jpg";
 
@@ -10,18 +10,22 @@ interface ProfilePageProps {
   onPostClick?: () => void;
 }
 
-const ProfilePage: React.FC<ProfilePageProps> = ({ onPostClick }) => {
+const ProfilePage: React.FC<ProfilePageProps> = React.memo(({ onPostClick }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const handlePostClick = useCallback(() => {
+    if (onPostClick) onPostClick();
+  }, [onPostClick]);
 
   return (
     <main className={styles.bg}>
       <section className={styles.profileCard}>
         <div className={styles.headerBg}>
-          <button className={styles.menuBtn} onClick={() => setMenuOpen((v) => !v)}>
+          <button className={styles.menuBtn} onClick={() => setMenuOpen((v) => !v)} aria-label="Open menu">
             <Image src="/ico/Message.png" alt="menu" width={20} height={20} className={styles.menuIcon} />
           </button>
-          <Image src="/Avatar.jpg" alt="avatar" width={96} height={96} className={styles.avatar} onError={e => (e.currentTarget.src = placeholder)} />
+          <Image src="/Avatar.jpg" alt="avatar" width={96} height={96} className={styles.avatar} onError={e => (e.currentTarget.src = placeholder)} priority />
           {menuOpen && (
             <div className={styles.menuPopup}>
               <button className={styles.menuPopupItem}>Edit Profile</button>
@@ -60,15 +64,16 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ onPostClick }) => {
           </div>
         </div>
         <div className={styles.postsList}>
-          <div onClick={onPostClick} style={{cursor: 'pointer'}}>
+          <div onClick={handlePostClick} style={{cursor: 'pointer'}}>
             <PostCard
               avatar="/Claira.jpg"
               name="Claire Dangais"
               username="@ClaireD15"
               image="/image.jpg"
+              isMain
             />
           </div>
-          <div onClick={onPostClick} style={{cursor: 'pointer'}}>
+          <div onClick={handlePostClick} style={{cursor: 'pointer'}}>
             <PostCard
               avatar="/Farita.jpg"
               name="Farita Smith"
@@ -76,7 +81,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ onPostClick }) => {
               image="/image1.jpg"
             />
           </div>
-          <div onClick={onPostClick} style={{cursor: 'pointer'}}>
+          <div onClick={handlePostClick} style={{cursor: 'pointer'}}>
             <PostCard
               avatar="/Farita.jpg"
               name="Farita Smith"
@@ -88,6 +93,6 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ onPostClick }) => {
       </section>
     </main>
   );
-};
+});
 
 export default ProfilePage;
